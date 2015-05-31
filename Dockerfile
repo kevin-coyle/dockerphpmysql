@@ -9,5 +9,8 @@ RUN mysqld_safe & \
 	sleep 10s &&\
 	mysql -e "CREATE DATABASE yourdb;"
 
+
+RUN         echo "xdebug.remote_enable=on" >> /etc/php5/apache2/conf.d/xdebug.ini
+RUN         echo "xdebug.remote_connect_back=on" >> /etc/php5/apache2/conf.d/xdebug.ini
 EXPOSE 80
 CMD ["/bin/bash", "/opt/startup.sh"]
