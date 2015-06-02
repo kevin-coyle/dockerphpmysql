@@ -13,4 +13,6 @@ RUN mysqld_safe & \
 RUN         echo "xdebug.remote_enable=on" >> /etc/php5/apache2/conf.d/xdebug.ini
 RUN         echo "xdebug.remote_connect_back=on" >> /etc/php5/apache2/conf.d/xdebug.ini
 EXPOSE 80
+RUN chown -R www-data:www-data /var/www/html
+RUN usermod -u 1000 www-data
 CMD ["/bin/bash", "/opt/startup.sh"]
