@@ -5,6 +5,7 @@ RUN apt-get install -yq mysql-server
 
 RUN a2enmod rewrite
 ADD startup.sh /opt/startup.sh
+ADD templates/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN mysqld_safe & \
 	sleep 10s &&\
 	mysql -e "CREATE DATABASE yourdb;"
