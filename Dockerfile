@@ -17,4 +17,11 @@ RUN 		echo "xdebug.max_nesting_level=256" >> /etc/php5/apache2/conf.d/xdebug.ini
 EXPOSE 80
 RUN chown -R www-data:www-data /var/www/html
 RUN usermod -u 1000 www-data
+
+RUN apt-get install -y curl
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
+RUN composer global require drush/drush:7.*
+RUN echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /root/.bashrc
 CMD ["/bin/bash", "/opt/startup.sh"]
