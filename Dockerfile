@@ -25,4 +25,5 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN composer global require drush/drush:7.*
 RUN echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /root/.bashrc
 CMD ["/bin/bash", "/opt/startup.sh"]
+RUN rm /var/www/html/index.html
 VOLUME ["/var/www/html"]
